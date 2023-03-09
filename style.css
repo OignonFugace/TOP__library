@@ -1,0 +1,31 @@
+/* SITE LAYOUT & GLOBAL STYLES */
+body {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+body > * {
+    padding: 50px 0;
+}
+
+body > * + * {
+    border-top: 1px solid black;
+}
+
+header, footer {
+    text-align: center;
+}
+
+
+/* PAGE */
+header h1 {
+    margin-top: 50px;
+}
+
+header button {
+    margin-top: 50px;
+}
+
+
+/* MEDIA QUERIES */
