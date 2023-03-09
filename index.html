@@ -17,7 +17,7 @@
     </header>
 
     <aside>
-        <form action="">
+        <form action="" id="mainForm">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" id="title" name="title" class="form-control">
@@ -34,52 +34,16 @@
                 <div>How long is your book in pages?</div>
             </div>
             <div class="mb-3 form-check">
-                <input type="checkbox" id="read" name="read" class="form-check-input">
-                <label for="read form-check-label">Read</label>
+                <input type="checkbox" id="read" name="read" class="form-check-input" value="read">
+                <label for="read" class="form-check-label">Read</label>
             </div> 
-            <button type="button" class="btn btn-secondary">Cancel</button>
-            <button type="button" class="btn btn-primary">Save</button>
+            <button type="button" id="cancelButton" class="btn btn-secondary">Cancel</button>
+            <button type="submit" id="formSubmissionButton" class="btn btn-primary">Save</button>
         </form>
     </aside>
 
     <main>
         <div id="cardWrapper" class="card-wrapper">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">H2G2</h5>
-                    <p class="card-text">by Douglas Adams</p>
-                    <p><small>233 Pages</small></p>
-                    <button class="btn btn-sm btn-success me-2">Read</button>
-                    <button class="btn btn-sm btn-outline-danger me-2">Delete</button>
-                </div>
-                <div class="card-footer">
-                    <span>Read</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">H2G2</h5>
-                    <p class="card-text">by Douglas Adams</p>
-                    <p><small>233 Pages</small></p>
-                    <button class="btn btn-sm btn-success me-2">Read</button>
-                    <button class="btn btn-sm btn-outline-danger me-2">Delete</button>
-                </div>
-                <div class="card-footer">
-                    <span>Read</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">H2G2</h5>
-                    <p class="card-text">by Douglas Adams</p>
-                    <p><small>233 Pages</small></p>
-                    <button class="btn btn-sm btn-success me-2">Read</button>
-                    <button class="btn btn-sm btn-outline-danger me-2">Delete</button>
-                </div>
-                <div class="card-footer">
-                    <span>Read</span>
-                </div>
-            </div>
         </div>
     </main>
 
