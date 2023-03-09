@@ -10,11 +10,18 @@ body > * {
 }
 
 body > * + * {
-    border-top: 1px solid black;
+    border-top: 1px solid grey;
 }
 
 header, footer {
     text-align: center;
+}
+
+/* CARD WRAPPER */
+.card-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
 }
 
 
@@ -27,5 +34,3 @@ header button {
     margin-top: 50px;
 }
 
-
-/* MEDIA QUERIES */
