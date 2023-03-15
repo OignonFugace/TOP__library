@@ -1,73 +1,77 @@
 // BOOK CONSTRUCTOR
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-
-    this.readBook = function() {
-        if (this.read) {
-            this.read = false;
-        } else {
-            this.read = true;
-        }
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    readBook() {
+        this.read = !this.read;
     }
 }
 
 
 // CARD & BOOKCARD CONSTRUCTOR
-function BookCard(book) {
-    this.title = book.title;
-    this.author = book.author;
-    this.pages = book.pages;
-    this.read = book.read;
+class BookCard {
+    constructor(book) {
+        this.title = book.title;
+        this.author = book.author;
+        this.pages = book.pages;
+        this.read = book.read;
 
-    const bookCardNode = document.createElement('div');
-    const bookCardBody = document.createElement('div');
-    const bookCardTitle = document.createElement('h5');
-    const bookCardText = document.createElement('p');
-    const bookCardPages = document.createElement('p');
-    const readButton = document.createElement('button');
-    const deleteButton = document.createElement('button');
-    const bookCardFooter = document.createElement('div');
+        return BookCard.createBookCard(book);
+    }
 
-    bookCardNode.setAttribute('data-id', book.id);
+    static createBookCard(book) {
+        const bookCardNode = document.createElement('div');
+        const bookCardBody = document.createElement('div');
+        const bookCardTitle = document.createElement('h5');
+        const bookCardText = document.createElement('p');
+        const bookCardPages = document.createElement('p');
+        const readButton = document.createElement('button');
+        const deleteButton = document.createElement('button');
+        const bookCardFooter = document.createElement('div');
 
-    bookCardNode.classList.add('card');
-    bookCardBody.classList.add('card-body');
-    bookCardTitle.classList.add('card-title');
-    bookCardText.classList.add('card-text');
-    readButton.classList.add('btn', 'btn-sm', 'btn-success', 'me-2');
-    deleteButton.classList.add('btn', 'btn-sm', 'btn-outline-danger', 'me-2');
-    bookCardFooter.classList.add('card-footer');
+        bookCardNode.setAttribute('data-id', book.id);
 
-    readButton.setAttribute('data-type', 'read');
-    readButton.onclick = Controller.processBookCardAction;
+        bookCardNode.classList.add('card');
+        bookCardBody.classList.add('card-body');
+        bookCardTitle.classList.add('card-title');
+        bookCardText.classList.add('card-text');
+        readButton.classList.add('btn', 'btn-sm', 'btn-success', 'me-2');
+        deleteButton.classList.add('btn', 'btn-sm', 'btn-outline-danger', 'me-2');
+        bookCardFooter.classList.add('card-footer');
 
-    deleteButton.setAttribute('data-type', 'delete');
-    deleteButton.onclick = Controller.processBookCardAction;
+        readButton.setAttribute('data-type', 'read');
+        readButton.onclick = Controller.processBookCardAction;
 
-    bookCardTitle.textContent = this.title;
-    bookCardText.textContent = `by ${this.author}`
-    readButton.textContent = "Read";
-    deleteButton.textContent = "Delete";
+        deleteButton.setAttribute('data-type', 'delete');
+        deleteButton.onclick = Controller.processBookCardAction;
 
-    bookCardPages.innerHTML = `<small>${this.pages} Pages</small>`;
-    bookCardFooter.innerHTML = `<span>${this.read ? 'Read' : 'Not Read'}</span>`;
+        bookCardTitle.textContent = book.title;
+        bookCardText.textContent = `by ${book.author}`
+        readButton.textContent = "Read";
+        deleteButton.textContent = "Delete";
 
-    bookCardBody.appendChild(bookCardTitle);
-    bookCardBody.appendChild(bookCardText);
-    bookCardBody.appendChild(bookCardPages);
-    bookCardBody.appendChild(readButton);
-    bookCardBody.appendChild(deleteButton);
-    bookCardNode.appendChild(bookCardBody);
-    bookCardNode.appendChild(bookCardFooter);
+        bookCardPages.innerHTML = `<small>${book.pages} Pages</small>`;
+        bookCardFooter.innerHTML = `<span>${book.read ? 'Read' : 'Not Read'}</span>`;
 
-    bookCardNode.updateReadView = function(book) {
-        this.lastElementChild.innerText = `${book.read ? 'Read' : 'Not Read'}`
-    };
+        bookCardBody.appendChild(bookCardTitle);
+        bookCardBody.appendChild(bookCardText);
+        bookCardBody.appendChild(bookCardPages);
+        bookCardBody.appendChild(readButton);
+        bookCardBody.appendChild(deleteButton);
+        bookCardNode.appendChild(bookCardBody);
+        bookCardNode.appendChild(bookCardFooter);
 
-    return bookCardNode;
+        bookCardNode.updateReadView = function(book) {
+            console.dir(this);
+            this.lastElementChild.innerText = `${book.read ? 'Read' : 'Not Read'}`
+        };
+
+        return bookCardNode;
+    }
 }
 
 
