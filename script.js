@@ -75,53 +75,54 @@ class BookCard {
 }
 
 
-// MVC ARCHITECTURE
-const View = {
-    createCard: function(book) {
-        return new BookCard(book);
-    },
 
-    appendCard: function (bookCard, where) {
+// MVC ARCHITECTURE
+class View {
+    static createCard(book) {
+        return new BookCard(book);
+    }
+
+    static appendCard(bookCard, where) {
         if (!where) {
             where = document.getElementById('cardWrapper');
         }
         where.appendChild(bookCard);
-    },
+    }
 
-    deleteCard: function(card) {
+    static deleteCard(card) {
         card.remove();
-    },
+    }
 
-    // updateReadView: function(card, readState) {
+    // static updateReadView(card, readState) {
     //     // console.dir(card);
     //     // console.log(readState);
     //     card.lastElementChild.innerText = readState ? 'Read' : 'Not Read';
-    // },
+    // }
 
-    toggleForm: function() {
+    static toggleForm() {
 
     }
 }
 
-const Model = {
-    library: [],
+class Model {
+    static library = [];
 
-    addBookToLibrary: function(book) {
+    static addBookToLibrary(book) {
         book.id = this.library.length;
         this.library.push(book);
-    },
+    }
 
-    deleteBookFromLibrary: function(id) {
+    static deleteBookFromLibrary(id) {
         delete this.library[id];
-    },
+    }
 
-    updateReadState: function(book) {
+    static updateReadState(book) {
         book.readBook();
     }
 }
 
-const Controller = {
-    processFormSubmission: function(e) {
+class Controller {
+    static processFormSubmission(e) {
         e.preventDefault();
         const title = e.target.title.value; 
         const author = e.target.author.value; 
@@ -132,9 +133,9 @@ const Controller = {
         Model.addBookToLibrary(book);
         const bookCard = View.createCard(book);
         View.appendCard(bookCard);
-    },
+    }
 
-    processBookCardAction: function(e) {
+    static processBookCardAction(e) {
         const card = e.target.parentElement.parentElement;
         const cardId = card.dataset.id;
         switch (e.target.dataset.type) {
@@ -152,7 +153,6 @@ const Controller = {
         }
     }
 }
-
 
 
 // APP
